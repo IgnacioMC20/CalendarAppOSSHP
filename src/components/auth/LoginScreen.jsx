@@ -49,7 +49,7 @@ export const LoginScreen = () => {
                             {/* <label htmlFor="" ><b>Usuario</b></label> */}
                             <input
                                 type="text"
-                                className={`text-center form-control h-auto text-dark rounded-pill border-0 py-3 px-4 mb-5 shadow-md ${ (lUsername.length > 0 && lUsername.length < 4) && 'is-invalid' }`}
+                                className={`text-center form-control h-auto text-dark rounded-pill border-0 py-3 px-4 mb-5 shadow-lg ${ (lUsername.length > 0 && lUsername.length < 4) && 'is-invalid' }`}
                                 placeholder="Usuario"
                                 autoComplete='off'
                                 name='lUsername'
@@ -61,7 +61,7 @@ export const LoginScreen = () => {
                             {/* <label htmlFor=""><b>Contraseña</b></label> */}
                             <input
                                 type="password"
-                                className={`text-center form-control h-auto text-dark rounded-pill border-0 py-3 px-4 mb-5 shadow-md ${ (lPassword.length > 0 && lPassword.length < 5) && 'is-invalid' }`}
+                                className={`text-center form-control h-auto text-dark rounded-pill border-0 py-3 px-4 mb-5 shadow-lg ${ (lPassword.length > 0 && lPassword.length < 5) && 'is-invalid' }`}
                                 placeholder="Contraseña"
                                 autoComplete='off'
                                 name='lPassword'

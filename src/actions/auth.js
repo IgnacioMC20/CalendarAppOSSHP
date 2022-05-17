@@ -21,9 +21,9 @@ export const startLogin = (email, password) => {
     }
 }
 
-export const startRegister = ({ name, email, password }) => {
+export const startRegister = ({ name, email, password, username, lastname }) => {
     return async (dispatch) => {
-        const resp = await fetchWithoutToken('auth/new', { name, email, password }, 'POST');
+        const resp = await fetchWithoutToken('auth/new', { name, email, password, username, lastname }, 'POST');
         const body = await resp.json();
         if (body.ok) {
             localStorage.setItem('token', body.token);
