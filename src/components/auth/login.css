@@ -1,0 +1,92 @@
+.login-container{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../img/prueba.jpg');
+}
+.card-header-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card{
+    background-color: rgba(255, 255, 255, 0.829);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(41, 41, 41, 0.445);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 20px;
+    width: 100%;
+}
+.login-form-1{
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    padding: 5%;
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+}
+.login-form-2{
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    padding: 5%;
+    background: #0062cc;
+    /* background: #151c24; */
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 35%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: rgb(117,25,191);
+background: linear-gradient(163deg, rgba(117,25,191,1) 50%, rgba(102,0,255,0.9332107843137255) 100%);
+}
+.btnSubmit:hover{
+    transform: scale(1.1);
+    transition: 0.1s;
+}
+/* .login-form-1 .btnSubmit{
+    color: #fff;
+    background-color: #0062cc;
+} */
+.login-form-2 .btnSubmit{
+    background-color: #fff;
+    color: #0062cc;
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #0062cc;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.change-form{
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.change-form:hover{
+    color: #141414;
+}
+
+.form-control::selection {
+    color: white;
+    background: rgba(117, 117, 117, 0.603);
+}
