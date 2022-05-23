@@ -12,14 +12,14 @@ import { Loading } from '../components/loading/Loading';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { RegisterScreen } from '../components/auth/RegisterScreen';
-import { Route } from 'react-router-dom';
-// import { Route } from 'react-router-dom';
+import { AdminRoute } from './AdminRoute';
+import { UsersScreen } from '../components/users/UsersScreen';
 // import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 export const AppRouter = () => {
   
   const dispatch = useDispatch();
-  const { checking, uid } = useSelector( state => state.auth);
+  const { checking, uid, isAdmin } = useSelector( state => state.auth);
 
   useEffect(() => {
     setTimeout(() => {
@@ -38,16 +38,11 @@ export const AppRouter = () => {
               <Switch>
                   <PrivateRoute exact path="/" component={ CalendarScreen }  isAuthenticated={ !!uid }/>
                   <PublicRoute exact path="/login" component={ LoginScreen } isAuthenticated={ !!uid } />
-                  <Route exact path="/register" component={RegisterScreen} />
+                  <AdminRoute exact path="/register" component={RegisterScreen} isAuthenticated={ !!uid } isAdmin={isAdmin}/>
+                  <AdminRoute exact path="/users" component={UsersScreen} isAuthenticated={ !!uid } isAdmin={isAdmin}/>
 
                   <Redirect to="/" />
               </Switch>
-
-              {/* 
-          // exact /login -> LoginScreen
-          // exact / -> CalendarScreen
-        */}
-
           </div>
       </Router>
   )

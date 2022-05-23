@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100vh;
     width: 100vw;
     /* background-color: rgb(205, 207, 207); */
@@ -9,14 +10,19 @@ html, body {
     display: flex;
     flex-flow: column;
     height: 100vh;
+    /* padding: 0px 15px; */
+}
+.calendar-containter{
+    height: 100vh;
+    padding: 15px 30px;
 }
 
-.rbc-calendar{
+.rbc-calendar {
     height: 100%;
 }
 
 /* Modal */
-.ReactModalPortal > div{
+.ReactModalPortal>div {
     opacity: 0;
 }
 
@@ -47,40 +53,96 @@ html, body {
 
 .modal {
     background: white;
-    border-radius: 5px;
+    border-radius: 20px;
     color: rgb(51, 51, 51);
     display: inline;
     max-height: 620px;
     max-width: 500px;
     outline: none;
-    padding: 10px;
+    padding: 45px;
+    overflow: hidden;
 }
 
-.react-datetime-picker input:focus{
+.react-datetime-picker input:focus {
     outline: none;
 }
 
-.react-datetime-picker__wrapper{
+.react-datetime-picker__wrapper {
     border: 0px solid gray !important;
 }
 
 
 /* FABS */
 
-.fab{
-    border-radius: 100%;
+.fab {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 15px;
-    bottom: 25px;
-    padding: 20px;
+    bottom: 5px;
+    padding: 25px;
     position: fixed;
     right: 25px;
+    color: white;
+    background-color: blueviolet;
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+.fab:hover{
+    /* rotate: 180deg; */
+    background-color: rgb(107, 41, 168);
+    border: rgb(107, 41, 168);
 }
 
-.fab-danger{
-    border-radius: 15px;
+.fab-danger {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 15px;
-    bottom: 100px;
-    padding: 20px;
+    bottom: 60px;
+    padding: 25px;
     position: fixed;
     right: 25px;
+    color: white;
+    background-color: rgb(184, 27, 92);
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+
+.fab-danger:hover{
+    /* transform: scale(1.1); */
+    background-color: rgb(179, 21, 21);
+    border: rgb(179, 21, 21);
+}
+
+/* From uiverse.io */
+.buttonLogout {
+    --accent: #212121;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 1.1em;
+    background-color: transparent;
+    color: white;
+    padding: 1em 2em;
+    transition: box-shadow ease-in-out 0.3s,
+        background-color ease-in-out 0.1s,
+        letter-spacing ease-in-out 0.1s,
+        transform ease-in-out 0.1s;
+}
+
+.buttonLogout:hover {
+    box-shadow: var(--hover-shadows);
+}
+
+.buttonLogout:active {
+    box-shadow: var(--hover-shadows),
+        var(--accent) 0px 0px 30px 5px;
+    background-color: var(--accent);
+    transform: scale(0.95);
 }

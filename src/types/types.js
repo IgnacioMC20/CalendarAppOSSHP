@@ -20,4 +20,8 @@ export const types = {
     authStartRegister: '[auth] Start Register',
     authStartTokenRenew: '[auth] Start Token Renew',
 
+    usersLoaded: '[users] Loaded Users',
+    usersStartAdmin: '[users] Start Admin',
+    usersStartEstado: '[users] Start Estado',
+
 }

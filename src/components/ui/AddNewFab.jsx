@@ -12,8 +12,10 @@ export const AddNewFab = () => {
     }
     
   return (
-    <button className='btn btn-primary fab' onClick={handleClick}>
-        <BsPlusLg />
+    <button className='fab' onClick={handleClick}>
+        <span>
+          <BsPlusLg />
+        </span>
     </button>
   )
 }

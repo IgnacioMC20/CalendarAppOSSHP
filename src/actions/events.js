@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { fetchWithToken } from "../helpers/fetch";
 import { prepareEvents } from "../helpers/prepareEvents";
 import { types } from "../types/types";
+import { toast } from "react-toastify";
 
 export const eventStartAddNew = (event) => {
   return async (dispatch, getState) => {
@@ -11,6 +12,7 @@ export const eventStartAddNew = (event) => {
       const resp = await fetchWithToken('events', event, 'POST');
       const body = await resp.json();
   
+      console.log(body)
       if(body.ok) {
         event.id = body.event.id;
         event.user = {
@@ -18,10 +20,32 @@ export const eventStartAddNew = (event) => {
           name
         }
         dispatch(eventAddNew(event));
+        return toast('🏥 Cita guardada correctamente!', {
+          position: "top-right",
+          theme: "dark",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          });
+      }else{
+        
       }
       
     } catch (error) {
       console.log(error);
+      return toast(error, {
+        position: "top-right",
+        theme: "dark",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        });
     
       
     }
@@ -47,8 +71,26 @@ export const eventStartUpdate = (event) => {
       const body = await resp.json();
       if(body.ok) {
         dispatch(eventUpdate(event));
+        return toast('🏥 Cita actualizada correctamente', {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          });
       }else{
-        Swal.fire('Error', body.msg, 'error');
+        return toast.error(body.msg, {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          });
+        
       }
     } catch (error) {
       console.log(error);

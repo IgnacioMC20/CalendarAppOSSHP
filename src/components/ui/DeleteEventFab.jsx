@@ -12,8 +12,10 @@ export const DeleteEventFab = () => {
     }
 
   return (
-    <button className='btn btn-danger fab-danger' onClick={handleDelete}>
+    <button className='fab-danger' onClick={handleDelete}>
+      <span>
         <BsFillTrashFill />
+      </span>
     </button>
   )
 }

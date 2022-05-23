@@ -4,7 +4,7 @@ import './loading.css'
 
 export const Loading = () => {
   return (
-    <div className="container">
+    <div className="container-loading bg-dark">
       <div>
         <JellyTriangle
           size={60}

@@ -6,35 +6,35 @@ const initialSate = {
     //name: null
 }
 
-export const authReducer = ( state = initialSate, action) => {
-  switch (action.type) {
-      case types.authLogin:
-          return {
-              ...state,
+export const authReducer = (state = initialSate, action) => {
+    switch (action.type) {
+        case types.authLogin:
+            return {
+                ...state,
                 checking: false,
                 ...action.payload
-          };
+            };
 
-      case types.authStartRegister:
-          return {
-              ...state,
+        case types.authStartRegister:
+            return {
+                ...state,
                 checking: false,
                 ...action.payload
-          };
-          
-      case types.authCheckingFinished:
-          return {
-              ...state,
-                checking: false,
-          };
+            };
 
-      case types.authLogout:
-          return {
-            //   ...state,
+        case types.authCheckingFinished:
+            return {
+                ...state,
                 checking: false,
-          };
-  
-      default:
-          return state;
-  }
+            };
+
+        case types.authLogout:
+            return {
+                //   ...state,
+                checking: false,
+            };
+
+        default:
+            return state;
+    }
 }

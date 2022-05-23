@@ -1,29 +1,39 @@
-import Swal from "sweetalert2";
 import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch";
 import { types } from "../types/types";
+import { toast, Flip } from 'react-toastify';
 
-export const startLogin = (email, password) => {
+
+export const startLogin = (username, password) => {
     return async (dispatch) => {
-        const resp = await fetchWithoutToken('auth', { email, password }, 'POST');
+        const resp = await fetchWithoutToken('auth', { username, password }, 'POST');
         const body = await resp.json();
         if (body.ok) {
             localStorage.setItem('token', body.token);
             localStorage.setItem('token-init-date', new Date().getTime());
-
             dispatch(login({
                 uid: body.uid,
                 name: body.name,
+                isAdmin: body.isAdmin,
             }));
         } else {
-            console.log(body);
-            Swal.fire('Error', body, 'error');
+            toast.error(`🦄 ${body.msg}`, {
+                // theme: "dark",
+                transition: Flip,
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 }
 
-export const startRegister = ({ name, email, password, username, lastname }) => {
+export const startRegister = ({ name, email, password, username, lastname, isAdmin }) => {
     return async (dispatch) => {
-        const resp = await fetchWithoutToken('auth/new', { name, email, password, username, lastname }, 'POST');
+        const resp = await fetchWithoutToken('auth/new', { name, email, password, username, lastname, isAdmin }, 'POST');
         const body = await resp.json();
         if (body.ok) {
             localStorage.setItem('token', body.token);
@@ -32,10 +42,20 @@ export const startRegister = ({ name, email, password, username, lastname }) => 
             dispatch(register({
                 uid: body.uid,
                 name: body.name,
+                isAdmin: body.isAdmin,
             }));
+            window.location.href = '/';
 
         } else {
-            Swal.fire('Error', body.msg, 'error');
+            toast.error(body.msg, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            })
         }
     }
 }
@@ -52,6 +72,7 @@ export const startChecking = () => {
                 dispatch(login({
                     uid: body.uid,
                     name: body.name,
+                    isAdmin: body.isAdmin,
                 }));
 
             } else {
