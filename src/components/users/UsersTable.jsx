@@ -1,5 +1,9 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { useTable } from 'react-table'
+import { editAdmin, editStatus } from '../../actions/users'
 
 export const UsersTable = ({ columns, data }) => {
     // Use the state and functions returned from useTable to build your UI
@@ -14,9 +18,38 @@ export const UsersTable = ({ columns, data }) => {
         data,
     })
 
-    const handleEditUser = (event, { username }) => {
-      event.preventDefault();
-      console.log({username});
+    const dispatch = useDispatch();
+
+    const history = useHistory();
+
+    const { userList } = useSelector( state => state.users);
+    const { username } = useSelector( state => state.auth);
+
+    const handleEditUser = (event, username, action) => {
+        
+        event.preventDefault();
+
+        const { id } = userList.find(user => user.username === username);
+
+        switch (action) {
+            case 'admin':
+                dispatch(editAdmin(id));
+                break;
+        
+            case 'estado':
+                dispatch(editStatus(id));
+                break;
+        
+            case 'edit':
+                // console.log('edit')
+                history.push(`/edit/${id}`);
+                break;
+        
+            default:
+                break;
+        }
+
+
     }
 
     // Render the UI for your table
@@ -48,14 +81,19 @@ export const UsersTable = ({ columns, data }) => {
                                 return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                             })}
                             <td>
-                                <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Permisos de Administrador" onClick={(e) => {
-                                        handleEditUser(e, row.values) }}>
-                                        Administrador
+                                <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Permisos de Administrador" disabled={(row.values.username === username ? true : false)} onClick={(e) => {
+                                    handleEditUser(e, row.values.username, 'admin')
+                                }}>
+                                    Administrador
                                 </button>
-                                    <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Activar/Desactivar" onClick={(e) => {
-                                        handleEditUser(e, row.values)
-                                    }}>Estado</button>
-                            </td>                            
+                                <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Activar/Desactivar" disabled={(row.values.username === username ? true : false)} onClick={(e) => {
+                                    handleEditUser(e, row.values.username, 'estado')
+                                }}>Estado</button>
+                                {/* todo, change to userid */}
+                                <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Editar usuario" onClick={(e) => {
+                                    handleEditUser(e, row.values.username, 'edit')
+                                }}>Editar</button>
+                            </td>
                         </tr>
                     )
                 })}

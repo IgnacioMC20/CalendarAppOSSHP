@@ -1,13 +1,20 @@
 import { types } from "../types/types";
 
+const initialState = {
+    userList: [],
+}
 
-export const usersReducer = (state = [], action) => {
+export const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.usersLoaded:
-            console.log(action.payload);
             return {
                 ...state,
-                users: [action.payload]
+                userList: action.payload
+            };
+        case types.usersStartAdmin:
+            return {
+                ...state,
+                userList: state.userList.map( e => (e.id === action.payload.id ? action.payload : e))
             };
 
         default:

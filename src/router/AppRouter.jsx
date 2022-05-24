@@ -14,6 +14,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RegisterScreen } from '../components/auth/RegisterScreen';
 import { AdminRoute } from './AdminRoute';
 import { UsersScreen } from '../components/users/UsersScreen';
+import { UserEditScreen } from '../components/users/UserEditScreen';
 // import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 export const AppRouter = () => {
@@ -40,6 +41,7 @@ export const AppRouter = () => {
                   <PublicRoute exact path="/login" component={ LoginScreen } isAuthenticated={ !!uid } />
                   <AdminRoute exact path="/register" component={RegisterScreen} isAuthenticated={ !!uid } isAdmin={isAdmin}/>
                   <AdminRoute exact path="/users" component={UsersScreen} isAuthenticated={ !!uid } isAdmin={isAdmin}/>
+                  <AdminRoute exact path="/edit/:id" component={UserEditScreen} isAuthenticated={ !!uid } isAdmin={isAdmin}/>
 
                   <Redirect to="/" />
               </Switch>

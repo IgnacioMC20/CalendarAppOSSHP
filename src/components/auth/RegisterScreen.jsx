@@ -9,10 +9,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Footer } from '../ui/Footer';
 import { Navbar } from '../ui/Navbar';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { FcUndo } from "react-icons/fc";
+import { Link } from 'react-router-dom';
 
 export const RegisterScreen = () => {
+
 
     const dispatch = useDispatch();
     const [formRegisterValues, handleRegisterInputChange] = useForm({
@@ -73,8 +75,8 @@ export const RegisterScreen = () => {
                 <ToastContainer />
                 <div className="h-100 d-flex justify-content-center align-items-center">
                     <div className="login-card animate__animated animate__bounceIn">
-                    <div class="ribbon-wrapper">
-                        <Link class="btn bt-light pt-4" to="/"><FcUndo /></Link>
+                    <div className="ribbon-wrapper">
+                        <Link className="btn bt-light pt-4" to='/'><FcUndo /></Link>
                     </div>
                         <div className="card-header-login">
                             <img src={logo} alt="" width='175px' />

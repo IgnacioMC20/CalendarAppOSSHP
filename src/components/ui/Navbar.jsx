@@ -20,9 +20,9 @@ export const Navbar = () => {
   return (
     <div className='navbar d-flex justify-content-between navbar-expand-lg navbar-dark bg-dark px-3 shadow'>
       <span className='navbar-brand'>
-        <a href="/">
-          <img src={logo} alt="" />
-        </a>
+        <Link to="/">
+          <img src={logo} alt="OSSHP-Logo" />
+        </Link>
       </span>
       <ul className='navbar-nav mr-auto'>
         <li className='navbar-brand'>

@@ -8,13 +8,13 @@ export const load = () => {
         try {
             const resp = await fetchWithToken('users');
             const body = await resp.json();
-            console.log(body);
+            const { users } = body;
             if (body.ok) {
-                dispatch(usersLoaded(body.users));
+                dispatch(usersLoaded(users));
                 toast('🏥 Usuarios cargados correctamente', {
                     position: "top-right",
                     theme: 'dark',
-                    autoClose: 4000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -33,3 +33,66 @@ export const load = () => {
 }
 
 export const usersLoaded = (payload) => ({ type: types.usersLoaded, payload });
+
+export const editAdmin = (id) => {
+    return async (dispatch) => {
+
+      const resp = await fetchWithToken(`users/admin/${id}`, {}, 'PUT');
+      const body = await resp.json();
+
+      if(body.ok) {
+        dispatch(adminStatusChanged(body.user))
+        toast(`🏥 ${body.message}`, {
+            position: "top-right",
+            theme: 'dark',
+            autoClose: 500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
+        }else{
+            toast.error(body.msg, {
+                position: "top-right",
+            });
+        }
+    }
+}
+
+export const adminStatusChanged = (payload) => ({
+  type: types.usersStartAdmin,
+  payload
+})
+
+export const editStatus = (id) => {
+  return async (dispatch) => {
+
+    const resp = await fetchWithToken(`users/status/${id}`, {}, 'PUT');
+    const body = await resp.json();
+
+    if(body.ok) {
+        dispatch(adminStatusChanged(body.user))
+        toast(`🏥 ${body.message}`, {
+            position: "top-right",
+            theme: 'dark',
+            autoClose: 500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
+        }else{
+            toast.error(body.msg, {
+                position: "top-right",
+            });
+        }
+  }
+}
+
+export const statusChanged = (payload) => ({
+    type: types.usersStartAdmin,
+    payload
+  })
+  

@@ -9,11 +9,12 @@ export const startLogin = (username, password) => {
         const body = await resp.json();
         if (body.ok) {
             localStorage.setItem('token', body.token);
-            localStorage.setItem('token-init-date', new Date().getTime());
+            localStorage.setItem('token-init-date', new Date().getTime()); // ?????
             dispatch(login({
                 uid: body.uid,
                 name: body.name,
                 isAdmin: body.isAdmin,
+                username: body.username
             }));
         } else {
             toast.error(`🦄 ${body.msg}`, {
@@ -73,6 +74,7 @@ export const startChecking = () => {
                     uid: body.uid,
                     name: body.name,
                     isAdmin: body.isAdmin,
+                    username: body.username
                 }));
 
             } else {
