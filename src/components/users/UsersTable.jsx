@@ -54,7 +54,7 @@ export const UsersTable = ({ columns, data }) => {
 
     // Render the UI for your table
     return (
-        <table {...getTableProps()} className='table table-borderless text-white text-center'>
+        <table {...getTableProps()} className='table table-bordered text-dark text-center bg-white rounded-5'>
             <thead>
                 {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
@@ -81,16 +81,16 @@ export const UsersTable = ({ columns, data }) => {
                                 return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                             })}
                             <td>
-                                <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Permisos de Administrador" disabled={(row.values.username === username ? true : false)} onClick={(e) => {
+                                <button className='btn btn-outline-dark mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Permisos de Administrador" disabled={(row.values.username === username ? true : false)} onClick={(e) => {
                                     handleEditUser(e, row.values.username, 'admin')
                                 }}>
-                                    Administrador
+                                    Admin
                                 </button>
-                                <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Activar/Desactivar" disabled={(row.values.username === username ? true : false)} onClick={(e) => {
+                                <button className='btn btn-outline-dark mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Activar/Desactivar" disabled={(row.values.username === username ? true : false)} onClick={(e) => {
                                     handleEditUser(e, row.values.username, 'estado')
                                 }}>Estado</button>
                                 {/* todo, change to userid */}
-                                <button className='btn btn-outline-light mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Editar usuario" onClick={(e) => {
+                                <button className='btn btn-outline-dark mx-2' data-bs-toggle="tooltip" data-bs-placement="top" title="Editar usuario" onClick={(e) => {
                                     handleEditUser(e, row.values.username, 'edit')
                                 }}>Editar</button>
                             </td>

@@ -5,6 +5,7 @@ import { LeapFrog } from '@uiball/loaders'
 import { UsersTable } from './UsersTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { load } from '../../actions/users';
+import './users.css'
 
 export const UsersScreen = () => {
 
@@ -27,7 +28,7 @@ export const UsersScreen = () => {
                 { Header: 'Usuario', accessor: 'username' },
                 { Header: 'Email', accessor: 'email' },
                 { Header: 'Estado', accessor: 'estado' },
-                { Header: 'Administrador', accessor: 'isAdmin' }
+                { Header: 'Admin', accessor: 'isAdmin' }
             ]);
             setLoadingUsers(false);
         }, 1500);
@@ -43,11 +44,11 @@ export const UsersScreen = () => {
     // }
 
     return (
-        <div className='calendar-screen bg-dark'>
+        <div className='calendar-screen'>
             <Navbar />
             <ToastContainer />
-            <div className="d-flex justify-content-center align-content-center h-100 m-5 p-5">
-                <div className="card w-100 shadow border-0 bg-dark text-white d-flex align-items-center justify-content-center p-5">
+            <div className="d-flex justify-content-center align-content-center h-100 p-5 users-screen">
+                <div className="card w-100 shadow border-0 d-flex align-items-center justify-content-center p-5 users-card">
                     {(loadingUsers) ? <LeapFrog size={60} speed={2} color="purple" /> : (
                         <div className="card-body w-100 animate__animated animate__fadeIn">
                             <UsersTable columns={columns} data={userList} />

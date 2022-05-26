@@ -1,0 +1,11 @@
+.users-screen{
+    background-image: url('../../img/prueba.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.users-card{
+    background-color: rgba(255, 255, 255, 0.76);
+    border-radius: 15px;
+}
