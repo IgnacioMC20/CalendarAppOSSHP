@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 import { useTable } from 'react-table'
-import { editAdmin, editStatus } from '../../actions/users'
+import { editAdmin, editStatus, loadUser } from '../../actions/users'
 
 export const UsersTable = ({ columns, data }) => {
     // Use the state and functions returned from useTable to build your UI
@@ -19,6 +19,7 @@ export const UsersTable = ({ columns, data }) => {
     })
 
     const dispatch = useDispatch();
+
 
     const history = useHistory();
 
@@ -42,7 +43,11 @@ export const UsersTable = ({ columns, data }) => {
         
             case 'edit':
                 // console.log('edit')
-                history.push(`/edit/${id}`);
+                dispatch(loadUser(id));
+                setTimeout(() => {
+                    history.push(`/edit/${id}`);
+                }, 250);
+
                 break;
         
             default:

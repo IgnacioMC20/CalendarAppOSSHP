@@ -19,14 +19,17 @@ import { UserEditScreen } from '../components/users/UserEditScreen';
 
 export const AppRouter = () => {
   
-  const dispatch = useDispatch();
   const { checking, uid, isAdmin } = useSelector( state => state.auth);
+  
+  // ? renews the jwt
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
       dispatch( startChecking() );
     }, 1000);
-  }, [dispatch])
+  }, [dispatch]);
+  
   
   if(checking) {
     return <Loading />;

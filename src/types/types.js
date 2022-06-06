@@ -21,6 +21,9 @@ export const types = {
     authStartTokenRenew: '[auth] Start Token Renew',
 
     usersLoaded: '[users] Loaded Users',
+    userLoaded: '[users] Loaded User',
+    userCleared: '[users] Cleared User',
+    usersCleared: '[users] Cleared Users',
     usersStartAdmin: '[users] Start Admin',
     usersStartEstado: '[users] Start Estado',
 

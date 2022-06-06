@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { LeapFrog } from '@uiball/loaders'
 import { UsersTable } from './UsersTable';
 import { useDispatch, useSelector } from 'react-redux';
-import { load } from '../../actions/users';
+import { load, usersCleared } from '../../actions/users';
 import './users.css'
 
 export const UsersScreen = () => {
@@ -37,6 +37,10 @@ export const UsersScreen = () => {
 
     useEffect(() => {
         loadUsers();
+
+        return () => {
+          dispatch(usersCleared());
+        }
     }, [])
 
     // if (loadingUsers) {

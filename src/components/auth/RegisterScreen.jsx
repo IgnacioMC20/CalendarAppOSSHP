@@ -15,7 +15,6 @@ import { Link } from 'react-router-dom';
 
 export const RegisterScreen = () => {
 
-
     const dispatch = useDispatch();
     const [formRegisterValues, handleRegisterInputChange] = useForm({
         rName: '',

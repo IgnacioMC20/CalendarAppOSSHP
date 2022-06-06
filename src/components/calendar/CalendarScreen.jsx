@@ -28,7 +28,9 @@ export const CalendarScreen = () => {
   // const { uid } = useSelector( state => state.auth );
 
   useEffect( () => {
+    
     dispatch(eventStartLoading())
+
   }, [dispatch])
 
   const onDoubleClick = (event) => {
