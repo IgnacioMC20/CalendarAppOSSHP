@@ -37,15 +37,26 @@ export const startRegister = ({ name, email, password, username, lastname, isAdm
         const resp = await fetchWithoutToken('auth/new', { name, email, password, username, lastname, isAdmin }, 'POST');
         const body = await resp.json();
         if (body.ok) {
-            localStorage.setItem('token', body.token);
-            localStorage.setItem('token-init-date', new Date().getTime());
+            // localStorage.setItem('token', body.token);
+            // localStorage.setItem('token-init-date', new Date().getTime());
 
-            dispatch(register({
-                uid: body.uid,
-                name: body.name,
-                isAdmin: body.isAdmin,
-            }));
-            window.location.href = '/';
+            // dispatch(register({
+            //     uid: body.uid,
+            //     name: body.name,
+            //     isAdmin: body.isAdmin,
+            // }));
+            toast(`🦄 ${body.msg}`, {
+                position: "top-right",
+                theme: 'dark',
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+            // window.location.href = '/';
+
 
         } else {
             toast.error(body.msg, {
