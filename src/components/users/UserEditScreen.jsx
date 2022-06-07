@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { startRegister } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 import logo from '../../img/login-osshp.png';
 
@@ -14,8 +13,7 @@ import { Navbar } from '../ui/Navbar';
 import { FcUndo } from "react-icons/fc";
 import { Link } from 'react-router-dom';
 import { LeapFrog } from '@uiball/loaders'
-import { activeUserCleared, loadUser, startUpdate } from '../../actions/users';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { activeUserCleared, startUpdate } from '../../actions/users';
 
 
 export const UserEditScreen = () => {
@@ -186,7 +184,7 @@ return (
                                     className="text-center form-control h-auto text-dark rounded-pill border-0 py-3 px-4 mb-5 shadow-lg"
                                     placeholder="Repita la contraseña"
                                     name='rPassword2'
-                                    value={(rPassword.length > 0) ? rPassword2 : rPassword2 = rPassword}
+                                    value={(rPassword.length > 0) ? rPassword2 : rPassword}
                                     onChange={handleRegisterInputChange}
                                     autoComplete='off'
                                 />

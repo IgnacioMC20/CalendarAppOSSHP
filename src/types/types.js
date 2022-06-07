@@ -26,5 +26,6 @@ export const types = {
     usersCleared: '[users] Cleared Users',
     usersStartAdmin: '[users] Start Admin',
     usersStartEstado: '[users] Start Estado',
+    userUpdated: '[users] Updated User',
 
 }

@@ -136,7 +136,9 @@ export const startUpdate = (data, id) => {
       const body = await resp.json();
       console.log(body);
         if (body.ok){
-            // dispatch(userUpdated(body.user));
+            console.log(body.user);
+            const { name, lastname, username, email, id } = body.user;
+            dispatch(userUpdated({ name, lastname, username, email, id }));
             toast('Usuario Actualizado correctamente', {
                 position: "top-right",
                 theme: 'dark',
@@ -162,7 +164,8 @@ export const startUpdate = (data, id) => {
     }
 };
 
-const userUpdated = (payload) => {
-  
-}
+const userUpdated = (payload) => ({
+ type: types.userUpdated, 
+ payload
+})
 

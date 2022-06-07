@@ -16,7 +16,7 @@ export const usersReducer = (state = initialState, action) => {
         case types.usersStartAdmin:
             return {
                 ...state,
-                userList: state.userList.map( e => (e.id === action.payload.id ? action.payload : e))
+                userList: state.userList.map(e => (e.id === action.payload.id ? action.payload : e))
             };
 
         case types.userLoaded:
@@ -36,6 +36,12 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 userList: []
             };
+
+        case types.userUpdated:
+            return {
+                ...state,
+                activeUser: action.payload
+            }
 
         default:
             return state;
