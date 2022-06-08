@@ -107,8 +107,27 @@ export const eventStartDelete = () => {
       const body = await resp.json();
       if(body.ok) {
         dispatch(eventDelete());
+        return toast('Cita elimindada correctamente', {
+          position: "top-right",
+          theme: 'dark',
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+      })
       }else{
-        Swal.fire('Error', body.msg, 'error');
+        return toast.error(body.msg, {
+          position: "top-right",
+          theme: 'dark',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+      })
       }
     } catch (error) {
       console.log(error);

@@ -40,6 +40,7 @@ export const RegisterScreen = () => {
         if (rName.length === 0 || rEmail.length === 0 || rPassword.length === 0 || rPassword2.length === 0 || rLastname.length === 0 || rUsername.length === 0) {
             return toast.error('Revisa bien tus datos', {
                 position: "top-right",
+                theme: 'dark',
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -51,6 +52,7 @@ export const RegisterScreen = () => {
         if (rPassword !== rPassword2) {
             console.log('Passwords do not match');
             toast.error('Las contraseñas no coinciden', {
+                theme: 'dark',
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -69,14 +71,14 @@ export const RegisterScreen = () => {
     };
     return (
         <>
-        <Navbar />
+            <Navbar />
             <div className="login-container">
                 <ToastContainer />
                 <div className="h-100 d-flex justify-content-center align-items-center">
                     <div className="login-card animate__animated animate__bounceIn">
-                    <div className="ribbon-wrapper">
-                        <Link className="btn bt-light pt-4" to='/'><FcUndo /></Link>
-                    </div>
+                        <div className="ribbon-wrapper">
+                            <Link className="btn bt-light pt-4" to='/'><FcUndo /></Link>
+                        </div>
                         <div className="card-header-login">
                             <img src={logo} alt="" width='175px' />
                             {/* <h3>Ingreso</h3> */}
@@ -170,7 +172,7 @@ export const RegisterScreen = () => {
                         </form>
                     </div>
                 </div>
-            <Footer />
+                <Footer />
             </div>
         </>
     )

@@ -34,10 +34,11 @@ const initEvent = {
 export const CalendarModal = ({ date }) => {
 
     const [titleValid, setTitleValid] = useState(true)
+    const [valid, setValid] = useState(true);
 
     const { isModalOpen } = useSelector(state => state.ui);
     const dispatch = useDispatch();
-    const { activeEvent } = useSelector(state => state.calendar);
+    const { activeEvent, events } = useSelector(state => state.calendar);
 
     const [formValues, setFormValues] = useState(initEvent)
 
@@ -86,6 +87,14 @@ export const CalendarModal = ({ date }) => {
         const momentStart = moment(start);
         const momentEnd = moment(end);
 
+        // todo: validate dates
+        events.forEach(element => {
+            if (element.start == start && element.end == end) {
+                console.log({ element: element.start, start })
+                return setValid(false);
+            }
+        });
+
         if (momentStart.isSameOrAfter(momentEnd)) {
             return toast.error('La fecha de inicio debe ser anterior a la fecha de finalización!', {
                 position: "top-right",
@@ -101,6 +110,7 @@ export const CalendarModal = ({ date }) => {
         if (title.trim().length === 0) {
             setTitleValid(false);
             return toast.error('El expediente es obligatorio', {
+                theme: 'dark',
                 position: "top-right",
                 autoClose: 4000,
                 hideProgressBar: false,
@@ -111,13 +121,26 @@ export const CalendarModal = ({ date }) => {
             });
         }
 
-        if (activeEvent) {
+        if (activeEvent && valid) {
             dispatch(eventStartUpdate(formValues));
         } else {
-            dispatch(eventStartAddNew(formValues));
+            if (valid) {
+                dispatch(eventStartAddNew(formValues));
+            } else {
+                toast.error('Las fechas seleccionadas están en conflicto con otra cita', {
+                    position: "top-right",
+                    theme: 'dark',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                })
+            }
         }
-
         setTitleValid(true);
+        setValid(true);
         closeModal();
 
     }
